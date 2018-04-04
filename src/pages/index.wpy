@@ -1,17 +1,40 @@
 <style lang="less">
+.groups_list {
+  .group {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 120px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: grey;
+    text:nth-child(2) {
+      text-align: center;
+    }
+    image {
+      height: 160px;
+    }
+    text:nth-child(3) {
+      height: 40px;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding-bottom: 5px;
+    }
+  }
+}
 </style>
 <template>
   <view class="container">
-    <ul>
-      <li class="groups_list"
-        wx:for="{{groups}}"
-        wx:key="item.id">
-        <span class="group">
-          <p>{{item.name}}</p>
-          <p>{{item.detail}}</p>
-        </span>
-      </li>
-    </ul>
+    <span class="groups_list"
+      wx:for="{{groups}}"
+      wx:key="item.id">
+      <div class="group">
+        <image src="{{item.imageurl}}"></image>
+        <text>{{item.name}}</text>
+        <text>{{item.detail}}</text>
+      </div>
+    </span>
   </view>
 </template>
 
@@ -25,10 +48,12 @@
     data = {
       groups: [{
         'id': 1,
-        'name': '1',
-        'detail': 'one'
+        'imageurl': '../stuffs/profile.gif',
+        'name': '小组名称',
+        'detail': '简介简介简介简介简介简介简介简介'
       }, {
         'id': 2,
+        'imageurl': '../stuffs/profile.gif',
         'name': '2',
         'detail': 'two'
       }]
