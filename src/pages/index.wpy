@@ -1,0 +1,40 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    <ul>
+      <li class="groups_list"
+        wx:for="{{groups}}"
+        wx:key="item.id">
+        <span class="group">
+          <p>{{item.name}}</p>
+          <p>{{item.detail}}</p>
+        </span>
+      </li>
+    </ul>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: 'test',
+    }
+    data = {
+      groups: [{
+        'id': 1,
+        'name': '1',
+        'detail': 'one'
+      }, {
+        'id': 2,
+        'name': '2',
+        'detail': 'two'
+      }]
+    }
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>
