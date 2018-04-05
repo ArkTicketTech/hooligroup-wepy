@@ -1,40 +1,43 @@
 <style lang="less">
 .groups_list {
+  overflow: hidden;
   .group {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    border: 1px solid transparent;
     width: 120px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: grey;
-    text:nth-child(2) {
-      text-align: center;
-    }
+    height: 160px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+    margin-left: 30px;
+    margin-bottom: 15px;
+    position: relative;
     image {
-      height: 160px;
+      height: 140px;
+      width: 120px;
     }
-    text:nth-child(3) {
-      height: 40px;
-      word-wrap: break-word;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      padding-bottom: 5px;
+    p {
+      text-align: center;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(0,0,0,.54);
+      line-height: 1.3;
     }
   }
 }
 </style>
 <template>
   <view class="container">
-    <span class="groups_list"
+    <div class="groups_list"
       wx:for="{{groups}}"
       wx:key="item.id">
       <div class="group">
         <image src="{{item.imageurl}}"></image>
-        <text>{{item.name}}</text>
-        <text>{{item.detail}}</text>
+        <p>{{item.name}}</p>
       </div>
-    </span>
+    </div>
   </view>
 </template>
 
@@ -49,13 +52,23 @@
       groups: [{
         'id': 1,
         'imageurl': '../stuffs/profile.gif',
-        'name': '小组名称',
-        'detail': '简介简介简介简介简介简介简介简介'
+        'name': '小组名称'
       }, {
         'id': 2,
         'imageurl': '../stuffs/profile.gif',
-        'name': '2',
-        'detail': 'two'
+        'name': 'Ark'
+      }, {
+        'id': 3,
+        'imageurl': '../stuffs/profile.gif',
+        'name': '一张船票'
+      }, {
+        'id': 4,
+        'imageurl': '../stuffs/profile.gif',
+        'name': '两张传票'
+      }, {
+        'id': 5,
+        'imageurl': '../stuffs/profile.gif',
+        'name': '三张船票'
       }]
     }
     onLoad() {
