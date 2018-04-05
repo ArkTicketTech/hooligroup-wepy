@@ -1,4 +1,5 @@
 <style lang="less">
+@import 'weui.wxss';
 </style>
 
 <script>
