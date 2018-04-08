@@ -1,75 +1,59 @@
 <style lang="less">
-.groups_list {
-  overflow: hidden;
-  .group {
-    border: 1px solid transparent;
-    width: 120px;
-    height: 160px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    float: left;
-    margin-left: 30px;
-    margin-bottom: 15px;
-    position: relative;
-    image {
-      height: 140px;
-      width: 120px;
-    }
-    p {
-      text-align: center;
-      display: block;
-      margin-bottom: 8px;
-      font-size: 12px;
-      font-weight: 500;
-      color: rgba(0,0,0,.54);
-      line-height: 1.3;
-    }
-  }
+.title{
+  position: relative;
+  color: rgb(25, 117, 2);
+  font-size: 50rpx;
+  left: 30rpx;
 }
 </style>
 <template>
   <view class="container">
-    <div class="groups_list"
-      wx:for="{{groups}}"
-      wx:key="item.id">
-      <div class="group">
-        <image src="{{item.imageurl}}"></image>
-        <p>{{item.name}}</p>
-      </div>
-    </div>
+    <view class="title">主题列表</view>
+    <repeat for="{{indexlist}}" index="index" item="item" key="index">
+      <list :img="item.img" :text="item.text"></list>
+    </repeat>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
+  import List from "../components/List"
 
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: 'test',
+      navigationBarTitleText: 'hooligroups'
+    }
+    components = {
+      list: List
     }
     data = {
-      groups: [{
-        'id': 1,
-        'imageurl': '../stuffs/profile.gif',
-        'name': '小组名称'
-      }, {
-        'id': 2,
-        'imageurl': '../stuffs/profile.gif',
-        'name': 'Ark'
-      }, {
-        'id': 3,
-        'imageurl': '../stuffs/profile.gif',
-        'name': '一张船票'
-      }, {
-        'id': 4,
-        'imageurl': '../stuffs/profile.gif',
-        'name': '两张传票'
-      }, {
-        'id': 5,
-        'imageurl': '../stuffs/profile.gif',
-        'name': '三张船票'
-      }]
+      indexlist:[
+        {
+          id: 1,
+          img: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523030843567&di=2e354772867389f8688f2f6b5330b61c&imgtype=0&src=http%3A%2F%2Fimg.besoo.com%2Ffile%2F201705%2F28%2F1759572445908.jpg",
+          text: "弄作弄跌whyyoutry 1"
+        },
+        {
+          id: 2,
+          img: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523030884518&di=b8a8d683619153455954c2d292ccb109&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201408%2F07%2F20140807212139_83cww.thumb.200_200_c.jpeg",
+          text: "弄作弄跌whyyoutry 2"
+        },
+        {
+          id: 3,
+          img: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523030902697&di=0e81eb121b1eb11eb14c68dd24d156c6&imgtype=0&src=http%3A%2F%2Fp3.gexing.com%2FG1%2FM00%2FDD%2F35%2FrBABFFHk_AvyuvQ8AAAYITL3AGo536_200x200_3.jpg%3Frecache%3D20131108",
+          text: "弄作弄跌whyyoutry 3"
+        },
+        {
+          id: 4,
+          img: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523031549274&di=3d9e88a9eeda92422ba72ef46634ab33&imgtype=0&src=http%3A%2F%2Fpic.ffpic.com%2Ffiles%2F2014%2F1105%2F0928ffpicxdytdde03549_s.jpg",
+          text: "弄作弄跌whyyoutry 4"
+        },
+        {
+          id: 5,
+          img: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4233981680,626173183&fm=27&gp=0.jpg",
+          text: "弄作弄跌whyyoutry 5"
+        }
+      ]
     }
     onLoad() {
       console.log('onLoad')

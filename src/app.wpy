@@ -1,5 +1,4 @@
 <style lang="less">
-@import 'weui.wxss';
 </style>
 
 <script>
@@ -8,13 +7,30 @@ import wepy from 'wepy'
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/index'
+      'pages/index',
+      'pages/logs'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: "#376956",
+      selectedColor: "#9966cc",
+      backgroundColor: "#ffffff",
+      list: [{
+        pagePath: "pages/index",
+        text: "首页"
+      }, {
+        pagePath: "pages/logs",
+        text: "日志"
+      }]
+    },
+    networkTimeout: {
+      "request": 10000,
+      "downloadFile": 10000
     }
   }
 

@@ -1,0 +1,41 @@
+<template lang="wxml">
+    <view class="listmodule">
+        <image class="img" src="{{img}}"></image>
+        <view class="text">{{text}}</view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class List extends wepy.component {
+    props = {
+        img: String,
+        text: String
+    }
+}
+</script>
+
+<style lang="less">
+.img {
+    float: left;
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    margin: 10rpx;
+}
+.text {
+    position: relative;
+    top: 95rpx;
+    left: 20rpx;
+    width: 460rpx;
+    float: left;
+    font-size: 30rpx;
+}
+.listmodule {
+    margin: 25rpx;
+    background-color: #eef5f4;
+    border-radius: 20rpx;
+    width: 700rpx;
+    height: 220rpx;
+}
+</style>
