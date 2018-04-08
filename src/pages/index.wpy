@@ -1,76 +1,73 @@
 <style lang="less">
-.groups_list {
-  overflow: hidden;
-  .group {
-    border: 1px solid transparent;
-    width: 120px;
-    height: 160px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    float: left;
-    margin-left: 30px;
-    margin-bottom: 15px;
-    position: relative;
-    image {
-      height: 140px;
-      width: 120px;
-    }
-    p {
-      text-align: center;
-      display: block;
-      margin-bottom: 8px;
-      font-size: 12px;
-      font-weight: 500;
-      color: rgba(0,0,0,.54);
-      line-height: 1.3;
+.container {
+  background: #eeeeee;
+
+  .placeholder {
+    height: 40px;
+  }
+
+  .navi_tabbar {
+    background-color: #eeeeee;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    .tabs_list {
+      display: flex;
+      flex-direction: row;
+      .tab_content {
+        width: 50%;
+      }
     }
   }
 }
 </style>
+
 <template>
   <view class="container">
-    <div class="groups_list"
-      wx:for="{{groups}}"
-      wx:key="item.id">
-      <div class="group">
-        <image src="{{item.imageurl}}"></image>
-        <p>{{item.name}}</p>
-      </div>
+    <view class="list">
+      <groups></groups>
+    </view>
+    <div>
+      <image class="placeholder" src="../stuffs/placeholder.png"></image>
     </div>
+    <view class="navi_tabbar">
+      <div class="tabs_list">
+        <div class="tab_content"
+          wx:for="{{tab}}"
+          wx:key="item.id">
+          <button type="default" size="{{defaultSize}}" loading="{{loading}}"
+          plain="{{plain}}" disabled="{{disabled}}" bindtap="default" hover-class="other-button-hover">
+            {{item.detail}}
+          </button>
+        </div>
+      </div>
+    </view>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
+  import groups from "../components/groups_list"
 
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: 'test',
     }
+
+    components = {
+      groups: groups
+    }
+
     data = {
-      groups: [{
+      tab: [{
         'id': 1,
-        'imageurl': '../stuffs/profile.gif',
-        'name': '小组名称'
+        'detail': '小组'
       }, {
         'id': 2,
-        'imageurl': '../stuffs/profile.gif',
-        'name': 'Ark'
-      }, {
-        'id': 3,
-        'imageurl': '../stuffs/profile.gif',
-        'name': '一张船票'
-      }, {
-        'id': 4,
-        'imageurl': '../stuffs/profile.gif',
-        'name': '两张传票'
-      }, {
-        'id': 5,
-        'imageurl': '../stuffs/profile.gif',
-        'name': '三张船票'
+        'detail': '我的'
       }]
     }
+
     onLoad() {
       console.log('onLoad')
     }
